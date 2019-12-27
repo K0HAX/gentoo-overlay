@@ -57,6 +57,13 @@ src_install() {
 	insinto ${DESTINATION}
 	doins -r usr
 	doins -r opt
+	fperms +x /opt/LBRY/libEGL.so
+	fperms +x /opt/LBRY/libffmpeg.so
+	fperms +x /opt/LBRY/libGLESv2.so
+	fperms +x /opt/LBRY/libVkICD_mock_icd.so
+	fperms +x /opt/LBRY/swiftshader/libGLESv2.so
+	fperms +x /opt/LBRY/swiftshader/libEGL.so
+	fperms +x /opt/LBRY/resources/static/daemon/lbrynet
 	fperms +x /opt/LBRY/lbry
 	dosym ${DESTINATION}/opt/LBRY/lbry ${DESTINATION}/usr/bin/lbry
 }
