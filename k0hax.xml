@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<repositories version="1.0">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>k0hax</name>
+		<description>K0HAX Custom Gentoo Repository</description>
+		<homepage>https://github.com/K0HAX/gentoo-overlay</homepage>
+		<owner>
+			<email>michael+NOSPAM@englehorn.com</email>
+		</owner>
+		<source type="git">https://github.com/K0HAX/gentoo-overlay.git</source>
+	</repo>
+</repositories>
