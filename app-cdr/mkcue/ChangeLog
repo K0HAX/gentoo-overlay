@@ -1,0 +1,27 @@
+# ChangeLog for app-cdr/mkcue
+# Copyright 1999-2020 Gentoo Authors; Distributed under the GPL v2
+# $Header: $
+
+*mkcue-1.1.20200105
+  05 Jan 2020; Michael Englehorn <michael@englehorn.com>
+  mkcue-1.1.20200105.ebuild;
+  Update ebuild
+  - Upstream source went away
+    - Found source from Debian
+	- Updated `configure` with autoreconf
+	- Re-packaged source
+	- Uploaded source to my server
+  - Updated EAPI
+
+*mkcue-1 (23 Dec 2012)
+
+  23 Dec 2012; Christopher Schwan <cschwan@students.uni-mainz.de>
+  mkcue-1.ebuild:
+  Update ebuild
+
+*mkcue-1 (13 Aug 2011)
+
+  13 Aug 2011; Christopher Schwan <cschwan@students.uni-mainz.de>
+  +mkcue-1.ebuild, +metadata.xml:
+  New ebuild
+
