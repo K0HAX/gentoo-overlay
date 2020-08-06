@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@englehorn.com</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<use>
+		<flag name="emoji">Enable graphical emojis using noto-emoji</flag>
+	</use>
+</pkgmetadata>
