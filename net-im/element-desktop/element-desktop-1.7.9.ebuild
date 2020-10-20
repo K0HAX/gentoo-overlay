@@ -17,15 +17,13 @@ SLOT="0"
 IUSE="+emoji"
 REQUIRED_USE=""
 
-RESTRICT="network-sandbox"
-
 RDEPEND="app-accessibility/at-spi2-atk:2
 	dev-db/sqlcipher
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/nspr
 	dev-libs/nss
-	>=net-libs/nodejs-12.14.0
+	>=net-libs/nodejs-14.11.0
 	net-print/cups
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2

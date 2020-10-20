@@ -15,8 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+emoji"
 
-RESTRICT="network-sandbox"
-
 RDEPEND="app-accessibility/at-spi2-atk:2
 	dev-db/sqlcipher
 	dev-libs/atk
