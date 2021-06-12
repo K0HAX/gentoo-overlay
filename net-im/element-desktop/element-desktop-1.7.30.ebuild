@@ -17,7 +17,11 @@ IUSE="+emoji"
 
 RESTRICT="network-sandbox"
 
-RDEPEND="!net-im/element-desktop-bin
+DEPEND="!net-im/element-desktop-bin
+	sys-apps/yarn
+	x11-misc/snixembed
+	net-libs/nodejs
+	virtual/rust
 	app-accessibility/at-spi2-atk:2
 	app-crypt/libsecret
 	dev-db/sqlcipher
@@ -25,7 +29,32 @@ RDEPEND="!net-im/element-desktop-bin
 	dev-libs/expat
 	dev-libs/nspr
 	dev-libs/nss
-	<net-libs/nodejs-16
+	net-print/cups
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
+	x11-libs/libxcb
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXcursor
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXi
+	x11-libs/libXrandr
+	x11-libs/libXrender
+	x11-libs/libXtst
+	x11-libs/libXScrnSaver
+	x11-libs/pango"
+RDEPEND="
+	!net-im/element-desktop-bin
+	app-accessibility/at-spi2-atk:2
+	app-crypt/libsecret
+	dev-db/sqlcipher
+	dev-libs/atk
+	dev-libs/expat
+	dev-libs/nspr
+	dev-libs/nss
 	net-print/cups
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -43,11 +72,7 @@ RDEPEND="!net-im/element-desktop-bin
 	x11-libs/libXtst
 	x11-libs/libXScrnSaver
 	x11-libs/pango
-	x11-misc/snixembed
 	emoji? ( media-fonts/noto-emoji )"
-DEPEND="${RDEPEND}"
-BDEPEND="sys-apps/yarn
-	virtual/rust"
 
 QA_PREBUILT="
 	/opt/Element/chrome-sandbox
