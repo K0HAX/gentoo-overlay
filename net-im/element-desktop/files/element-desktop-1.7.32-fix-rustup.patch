@@ -1,0 +1,13 @@
+diff -ru a/hak/matrix-seshat/check.js b/hak/matrix-seshat/check.js
+--- a/hak/matrix-seshat/check.js	2021-07-07 18:48:17.907151921 -0500
++++ b/hak/matrix-seshat/check.js	2021-07-07 18:50:00.357406764 -0500
+@@ -65,7 +65,8 @@
+     await new Promise((resolve, reject) => {
+         childProcess.execFile('rustup', ['target', 'list', '--installed'], (err, out) => {
+             if (err) {
+-                reject("Can't find rustup");
++                //reject("Can't find rustup");
++		console.log("Can't find rustup");
+             }
+             const target = hakEnv.getTargetId();
+             if (!out.includes(target)) {

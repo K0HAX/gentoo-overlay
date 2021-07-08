@@ -1,0 +1,18 @@
+diff -ru a/hak/matrix-seshat/check.js b/hak/matrix-seshat/check.js
+--- a/hak/matrix-seshat/check.js	2021-07-07 18:59:22.052806242 -0500
++++ b/hak/matrix-seshat/check.js	2021-07-07 18:59:52.875883189 -0500
+@@ -61,6 +61,8 @@
+         });
+     }
+ 
++// Patching out rustup for Gentoo installs
++/*
+     // Ensure Rust target exists
+     await new Promise((resolve, reject) => {
+         childProcess.execFile('rustup', ['target', 'list', '--installed'], (err, out) => {
+@@ -75,4 +77,5 @@
+             resolve();
+         });
+     });
++*/
+ };
