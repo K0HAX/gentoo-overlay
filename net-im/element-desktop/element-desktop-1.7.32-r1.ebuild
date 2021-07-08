@@ -22,7 +22,6 @@ DEPEND="!net-im/element-desktop-bin
 	x11-misc/snixembed
 	net-libs/nodejs
 	virtual/rust
-	~dev-util/rustup-1.24.2
 	app-accessibility/at-spi2-atk:2
 	app-crypt/libsecret
 	dev-db/sqlcipher
