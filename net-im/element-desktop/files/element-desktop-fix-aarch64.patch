@@ -1,0 +1,43 @@
+diff -ru a/package.json b/package.json
+--- a/package.json	2022-02-26 10:12:57.918595582 -0600
++++ b/package.json	2022-02-26 10:12:00.648662480 -0600
+@@ -27,6 +27,7 @@
+     "build:native:universal": "yarn run hak --target x86_64-apple-darwin fetchandbuild && yarn run hak --target aarch64-apple-darwin fetchandbuild && yarn run hak --target x86_64-apple-darwin --target aarch64-apple-darwin copyandlink",
+     "build:32": "yarn run build:ts && yarn run build:res && electron-builder --ia32",
+     "build:64": "yarn run build:ts && yarn run build:res && electron-builder --x64",
++    "build:aarch64": "yarn run build:ts && yarn run build:res && USE_SYSTEM_FPM=true electron-builder --arm64",
+     "build:universal": "yarn run build:ts && yarn run build:res && electron-builder --universal",
+     "build": "yarn run build:ts && yarn run build:res && electron-builder",
+     "build:ts": "tsc",
+diff -ru a/scripts/hak/target.ts b/scripts/hak/target.ts
+--- a/scripts/hak/target.ts	2022-02-26 10:12:57.928595570 -0600
++++ b/scripts/hak/target.ts	2022-02-26 10:12:00.648662480 -0600
+@@ -23,6 +23,7 @@
+     'universal-apple-darwin' |
+     'i686-pc-windows-msvc' |
+     'x86_64-pc-windows-msvc' |
++    'aarch64-unknown-linux-gnu' |
+     'x86_64-unknown-linux-gnu';
+ 
+ // Values are expected to match those used in `process.platform`.
+@@ -87,6 +88,12 @@
+     vcVarsArch: 'amd64',
+ };
+ 
++const aarch64UnknownLinuxGnu: Target = {
++    id: 'aarch64-unknown-linux-gnu',
++    platform: 'linux',
++    arch: 'arm64',
++};
++
+ const x8664UnknownLinuxGnu: Target = {
+     id: 'x86_64-unknown-linux-gnu',
+     platform: 'linux',
+@@ -100,6 +107,7 @@
+     'i686-pc-windows-msvc': i686PcWindowsMsvc,
+     'x86_64-pc-windows-msvc': x8664PcWindowsMsvc,
+     'x86_64-unknown-linux-gnu': x8664UnknownLinuxGnu,
++    'aarch64-unknown-linux-gnu': aarch64UnknownLinuxGnu,
+ };
+ 
+ // The set of targets we build by default, sorted by increasing complexity so
