@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vector-im/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 arm64"
 IUSE="+emoji"
 
 RESTRICT="network-sandbox"
@@ -84,6 +84,10 @@ QA_PREBUILT="
 	/opt/Element/swiftshader/libEGL.so
 	/opt/Element/swiftshader/libGLESv2.so"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-fix-aarch64.patch
+)
+
 src_prepare() {
 	default
 	yarn install || die
@@ -95,7 +99,11 @@ src_compile() {
 	yarn run fetch --importkey || die
 	yarn run fetch --cfgdir 'defcfg' || die
 	yarn build:native || die
-	yarn build || die
+	if use arm64; then
+		yarn build:aarch64 || die
+	else
+		yarn build || die
+	fi
 }
 
 src_install() {
