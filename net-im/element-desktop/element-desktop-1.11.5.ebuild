@@ -17,10 +17,11 @@ IUSE="+emoji"
 
 RESTRICT="network-sandbox"
 
+# net-libs/nodejs-18 FAILS TO BUILD THIS PACKAGE - 2022-06-14 - Michael Englehorn
 DEPEND="!net-im/element-desktop-bin
 	sys-apps/yarn
 	x11-misc/snixembed
-	>=net-libs/nodejs-16.14.2
+	=net-libs/nodejs-16.14*
 	virtual/rust
 	app-accessibility/at-spi2-atk:2
 	app-crypt/libsecret
@@ -80,13 +81,7 @@ QA_PREBUILT="
 	/opt/Element/libEGL.so
 	/opt/Element/libGLESv2.so
 	/opt/Element/libffmpeg.so
-	/opt/Element/libvk_swiftshader.so
-	/opt/Element/swiftshader/libEGL.so
-	/opt/Element/swiftshader/libGLESv2.so"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-fix-aarch64.patch
-)
+	/opt/Element/libvk_swiftshader.so"
 
 src_prepare() {
 	default
