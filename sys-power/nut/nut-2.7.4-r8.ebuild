@@ -30,7 +30,8 @@ DEPEND="
 	zeroconf? ( net-dns/avahi )"
 
 BDEPEND="
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	>=sys-apps/sed-4"
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-nut )"
