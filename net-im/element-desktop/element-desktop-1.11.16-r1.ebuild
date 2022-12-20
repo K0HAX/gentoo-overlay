@@ -21,7 +21,7 @@ RESTRICT="network-sandbox"
 DEPEND="!net-im/element-desktop-bin
 	sys-apps/yarn
 	x11-misc/snixembed
-	=net-libs/nodejs-16.17*
+	=net-libs/nodejs-16.18*
 	virtual/rust
 	app-accessibility/at-spi2-atk:2
 	app-crypt/libsecret
