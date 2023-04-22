@@ -28,7 +28,6 @@ REQUIRED_USE="
 
 DEPEND="
 	dev-libs/re
-	>=media-libs/rem-0.4.7
 	alsa? ( media-libs/alsa-lib )
 	amr? ( media-libs/opencore-amr )
 	avahi? ( net-dns/avahi )
