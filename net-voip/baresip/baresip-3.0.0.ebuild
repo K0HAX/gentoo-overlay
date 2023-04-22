@@ -20,7 +20,7 @@ fi
 
 inherit cmake
 
-IUSE="alsa amr avahi cairo codec2 +cons evdev ffmpeg +g711 g722 g7221 g726 gsm gstaudio gstvideo gtk h265 ilbc isac jack +l16 libnotify mpa mpg123 mqtt openssl opus opus-ms oss plc portaudio pulseaudio rtcp-summary sdl2 sndfile speex srtp +stdio syslog v4l2 x11 vpx"
+IUSE="alsa amr avahi cairo codec2 +cons evdev ffmpeg +g711 g722 g726 gsm gstaudio gstvideo gtk h265 ilbc isac jack +l16 libnotify mpa mpg123 mqtt openssl opus opus-ms oss plc portaudio pulseaudio rtcp-summary sdl2 sndfile speex srtp +stdio syslog v4l2 x11 vpx"
 
 REQUIRED_USE="
 	libnotify? ( gtk )
@@ -36,7 +36,6 @@ DEPEND="
 	codec2? ( media-libs/codec2 )
 	evdev? ( dev-libs/libevdev )
 	g722? ( media-libs/spandsp )
-	g7221? ( media-libs/libg7221 )
 	gsm? ( media-sound/gsm )
 	gstaudio? (
 		media-libs/gstreamer:1.0
