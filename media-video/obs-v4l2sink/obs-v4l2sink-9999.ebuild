@@ -6,8 +6,6 @@ EAPI=7
 CMAKE_REMOVE_MODULES_LIST="FindLibObs"
 inherit cmake
 
-inherit eutils
-
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 

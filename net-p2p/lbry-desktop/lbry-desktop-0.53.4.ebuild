@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A browser for the LBRY network, a digital marketplace controlled by its users."
 HOMEPAGE="https://lbry.com/"
 
-inherit eutils gnome2-utils
+inherit gnome2-utils
 
 # https://github.com/lbryio/lbry-desktop/archive/v0.38.2.tar.gz
 if [[ ${PV} == "9999" ]]; then
