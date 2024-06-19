@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vector-im/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+emoji"
 
 RESTRICT="network-sandbox"
@@ -21,7 +21,7 @@ RESTRICT="network-sandbox"
 DEPEND="!net-im/element-desktop-bin
 	sys-apps/yarn
 	x11-misc/snixembed
-	=net-libs/nodejs-16.20*
+	=net-libs/nodejs-20.12*
 	virtual/rust
 	app-accessibility/at-spi2-atk:2
 	app-crypt/libsecret
