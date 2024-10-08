@@ -1,19 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd bash-completion-r1 autotools tmpfiles
 
 DESCRIPTION="Implementation of IEEE 802.1ab (LLDP)"
-HOMEPAGE="https://vincentbernat.github.com/lldpd/"
-SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
+HOMEPAGE="https://lldpd.github.io/"
+SRC_URI="https://github.com/lldpd/lldpd/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0/4.9.0"
-KEYWORDS="~amd64 ~x86"
+SLOT="0/4.9.1"
+KEYWORDS="amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
-	seccomp sonmp snmp static-libs test readline xml zsh-completion"
+	seccomp sonmp snmp static-libs test readline valgrind xml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -23,31 +23,39 @@ RDEPEND="
 	>=dev-libs/libevent-2.1.11:=
 	sys-libs/readline:0=
 	seccomp? ( sys-libs/libseccomp:= )
-	snmp? ( net-analyzer/net-snmp[extensible(+)] )
+	snmp? ( net-analyzer/net-snmp:=[extensible(+)] )
 	xml? ( dev-libs/libxml2:= )
-	zsh-completion? ( app-shells/zsh )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
+	valgrind? ( dev-debug/valgrind )
 "
 BDEPEND="virtual/pkgconfig
 	doc? (
-		graph? ( app-doc/doxygen[dot] )
-		!graph? ( app-doc/doxygen )
+		graph? ( app-text/doxygen[dot,doc] )
+		!graph? ( app-text/doxygen )
 	)
 "
 
-REQUIRED_USE="graph? ( doc )"
+REQUIRED_USE="
+	graph? ( doc )
+	test? ( snmp sanitizers )
+"
+
+# tests need root
+RESTRICT+=" test"
 
 src_prepare() {
 	default
 
 	eautoreconf
-	elibtoolize
 }
 
 src_configure() {
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+
 	econf \
+		--cache-file="${S}"/config.cache \
 		--without-embedded-libevent \
 		--with-privsep-user=${PN} \
 		--with-privsep-group=${PN} \
@@ -55,6 +63,7 @@ src_configure() {
 		--with-lldpd-ctl-socket=/run/${PN}.socket \
 		--with-lldpd-pid-file=/run/${PN}.pid \
 		$(use_enable cdp) \
+		$(use_enable doc doxygen-doc) \
 		$(use_enable doc doxygen-man) \
 		$(use_enable doc doxygen-pdf) \
 		$(use_enable doc doxygen-html) \
@@ -95,4 +104,8 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	newtmpfiles "${FILESDIR}"/tmpfilesd ${PN}.conf
+}
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 }
