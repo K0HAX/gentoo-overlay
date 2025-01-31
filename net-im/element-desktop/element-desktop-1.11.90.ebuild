@@ -7,8 +7,8 @@ inherit unpacker xdg
 
 DESCRIPTION="A glossy Matrix collaboration client for desktop"
 HOMEPAGE="https://element.io"
-SRC_URI="https://github.com/vector-im/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/vector-im/element-desktop/archive/v${PV}.tar.gz -> element-desktop-${PV}.tar.gz"
+SRC_URI="https://github.com/element-hq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/element-hq/element-desktop/archive/v${PV}.tar.gz -> element-desktop-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -19,34 +19,36 @@ RESTRICT="network-sandbox"
 
 # net-libs/nodejs-18 FAILS TO BUILD THIS PACKAGE - 2022-06-14 - Michael Englehorn
 DEPEND="!net-im/element-desktop-bin
-	sys-apps/yarn
-	x11-misc/snixembed
-	=net-libs/nodejs-22.4*
-	virtual/rust
-	app-accessibility/at-spi2-atk:2
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret
 	dev-db/sqlcipher
-	dev-libs/atk
 	dev-libs/expat
+	dev-libs/nettle
 	dev-libs/nspr
 	dev-libs/nss
+	media-libs/alsa-lib
+	media-libs/mesa
 	net-print/cups
+	sys-apps/dbus
+	virtual/udev
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
-	x11-libs/libxcb
 	x11-libs/libX11
 	x11-libs/libXcomposite
-	x11-libs/libXcursor
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
 	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libXtst
-	x11-libs/libXScrnSaver
-	x11-libs/pango"
+	x11-libs/libdrm
+	x11-libs/libxcb
+	x11-libs/libxcbcommon
+	x11-libs/pango
+	sys-apps/yarn
+	x11-misc/snixembed
+	=net-libs/nodejs-22.12*
+	dev-lang/rust
+	dev-libs/atk"
 RDEPEND="
 	!net-im/element-desktop-bin
 	app-accessibility/at-spi2-atk:2
